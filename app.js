@@ -32,8 +32,12 @@ app.post('/*', function(req, res) {
 
     postToTrello(listId, command, text, function(err, data) {
 		if (err) throw err;
-  		console.log(data);
-  		res.status(200).send(data);
+  		
+  		// Get information about card
+  		var name = data.name;
+  		var shortURL = data.shortUrl;
+  		
+  		res.status(200).send("Card " + name + " created at: " + shortURL);
     });
 });
 
