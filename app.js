@@ -14,7 +14,7 @@ function postToTrello(listId, command, text, cb) {
     var desc = regex.exec(text);
 
     if (name == null || desc == null) {
-    	throw new Error('Oh hamburgers! Format is /' + command + ' "card name" "card description"');
+    	throw new Error('Oh hamburgers! Format is /' + command + ' <card name> <card description>');
     }
 
 	var card_data = {
@@ -33,12 +33,12 @@ app.post('/*', function(req, res) {
     postToTrello(listId, command, text, function(err, data) {
 		if (err) throw err;
   		console.log(data);
-  		res.status(200).send('created card');
+  		res.status(200).send('Card created');
     });
 });
 
 // test route
-app.get('/', function (req, res) { res.status(200).send('SupportKit.io loves Slack and Trello!') });
+// app.get('/', function (req, res) { res.status(200).send('SupportKit.io loves Slack and Trello!') });
  
 // error handler
 app.use(function (err, req, res, next) {
