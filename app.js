@@ -37,7 +37,7 @@ app.post('/*', function(req, res) {
   		var name = data.name;
   		var shortURL = data.shortUrl;
   		
-  		res.status(200).send("Card " + name + " created at: " + shortURL);
+  		res.status(200).send("Card " + name + " created at: <" + shortURL + ">");
     });
 });
 
